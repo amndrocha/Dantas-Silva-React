@@ -59,7 +59,7 @@ function App() {
       )
     } else if (current === "escritorio") {
         return(
-          <div id="escritorioContent" className="middle">
+          <div className="middle">
             <h1 style={{margin: "20px"}}>O Escritório</h1>
             <div id="textBox">
                 <img id="floatImage" src="img/img3.jpg"/>            
@@ -70,11 +70,23 @@ function App() {
         )
     } else if (current === "equipe") {
       return (
-        <div className="middle">
+        <div id="equipeContent" className="middle">
           {equipe.map((categoria) => {
             return(
               <div className="categoriaEquipe" key={categoria.title}>
                 <h1 className="title">{categoria.title}</h1>
+                {categoria.members.map(member => {
+                  return(
+                    <div className="membroEquipe">
+                      <img className="equipeImage" src={member.picture}/>
+                      <div className="membroInfo">
+                        <h2 className="name">{member.name}</h2>
+                        <h3 className="job">{member.job}</h3>
+                        <p className="contact">{member.contact}</p>
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
             )            
           })}
